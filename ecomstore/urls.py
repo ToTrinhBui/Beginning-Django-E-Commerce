@@ -18,9 +18,22 @@ from django.urls import path, include
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("catalog.urls"), name='home')
-]
+    path('', include("catalog.urls"), name='home'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# if settings.DEBUG:
+#     urlpatterns += static(settings.STATIC_URL,
+#                           document_root=settings.MEDIA_ROOT)
+
+handler404 = 'ecomstore.views.handler404'
+handler500 = 'ecomstore.views.handler500'
+

@@ -1,17 +1,19 @@
 {% extends "catalog.html" %}
 
+{% load static %}
+
 {% block content %}
 <h1>{{ c.name }}</h1>
 {{ c.description }}
 <br /><br />
 	{% for p in products %}
-	<!-- div class="product_thumbnail">
-		<a href="{{ p.get_absolute_url }}">
-		<img src="{{ MEDIA_URL }}images/products/thumbnails/{{ p.image }}" alt="{{ p.name }}" class="bn" />
+	<div class="product_thumbnail">
+		<a href="{{p.get_absolute_url}}">
+		<img src='{{p.image.url}}' alt="{{ p.name }}" class="bn" />
 		<br />
-		{{ p.name }}
+		{{p.name }}
 		</a>
-	</div -->
-	{% include 'tags/product_thumbnail.html' %}
+	</div>
+	<!-- {% include 'tags/product_thumbnail.html' %} -->
 	{% endfor %}
 {% endblock %}

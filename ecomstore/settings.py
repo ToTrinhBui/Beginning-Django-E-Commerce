@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,3 +134,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_NAME = 'Modern Musician'
 META_KEYWORDS = 'Music, instruments, music accessories, musician supplies'
 META_DESCRIPTION = 'Modern Musician is an online supplier of instruments, sheet music, and other accessories for musicians'
+
+MEDIA_URL = '/catalog/static/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'catalog/static/')
+
+# TEMPLATE_DIRS = (os.path.join(CURRENT_PATH, 'templates'),)
