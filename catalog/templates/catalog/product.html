@@ -1,5 +1,8 @@
 {% extends "catalog.html" %}
+
+{% load catalog_filters %}
 {% load static %}
+
 {% block content %}
 <div class="product_image">
 		<img src={{p.image.url}} alt="{{ p.name}}" />
@@ -23,7 +26,13 @@
 		Price: $ {{ p.price }}
 	{% endif %}
 	<br /><br />
-	[add to cart button]
+	<form action="{% url 'catalog_product' slug=p.slug %}" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<br />
+		<input type="submit" value="Add To Cart" name="submit" alt="Add To Cart" />
+		</form>
+		<div class="cb"></div>
 	<br /><br />
 	<div class="cb"><br /><br /></div>
 	<h3>Product Description</h3>
