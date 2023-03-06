@@ -157,7 +157,6 @@ GOOGLE_CHECKOUT_URL = 'https://checkout.google.com/api/checkout/v2/merchantCheck
 
 # Change to true before deploying into production
 ENABLE_SSL = False
-SECURE_SSL_REDIRECT = True
 
 AUTHNET_POST_URL = 'test.authorize.net'
 AUTHNET_POST_PATH = '/gateway/transact.dll'

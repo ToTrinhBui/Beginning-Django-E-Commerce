@@ -90,8 +90,12 @@ def cart_subtotal(request):
         cart_total += cart_item.product.price * cart_item.quantity
     return cart_total
 
+# returns the total number of items in the user's cart
+def cart_distinct_item_count(request):
+    return get_cart_items(request).count()
+
 def is_empty(request):
-    return cart_item_count(request) == 0
+    return cart_distinct_item_count(request) == 0
 
 def empty_cart(request):
     user_cart = get_cart_items(request)
