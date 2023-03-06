@@ -39,9 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'catalog.apps.CatalogConfig',
     'utils.apps.UtilsConfig',
     'cart.apps.CartConfig',
+    'checkout.apps.CheckoutConfig',
+
     'django.contrib.flatpages',
     'django.contrib.sites',
 ]
@@ -57,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+#    'ecomstore.SSLMiddleware.SSLRedirect',
 ]
 
 ROOT_URLCONF = 'ecomstore.urls'
@@ -145,3 +149,17 @@ MEDIA_URL = '/catalog/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'catalog/static/')
 
 # TEMPLATE_DIRS = (os.path.join(CURRENT_PATH, 'templates'),)
+
+GOOGLE_CHECKOUT_MERCHANT_ID = 'your id here'
+GOOGLE_CHECKOUT_MERCHANT_KEY = 'your key here'
+GOOGLE_CHECKOUT_URL = 'https://checkout.google.com/api/checkout/v2/merchantCheckout/Merchant/' + \
+    GOOGLE_CHECKOUT_MERCHANT_ID
+
+# Change to true before deploying into production
+ENABLE_SSL = False
+SECURE_SSL_REDIRECT = True
+
+AUTHNET_POST_URL = 'test.authorize.net'
+AUTHNET_POST_PATH = '/gateway/transact.dll'
+AUTHNET_LOGIN = ['your login here']
+AUTHNET_KEY = ['your transaction key here']
