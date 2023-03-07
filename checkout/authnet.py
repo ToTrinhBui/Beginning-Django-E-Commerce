@@ -3,6 +3,7 @@ import http.client as httplib
 import urllib
 
 
+
 def do_auth_capture(amount='0.00', card_num=None, exp_date=None, card_cvv=None):
     delimiter = '|'
     raw_params = {

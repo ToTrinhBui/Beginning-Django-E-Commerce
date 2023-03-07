@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'utils.apps.UtilsConfig',
     'cart.apps.CartConfig',
     'checkout.apps.CheckoutConfig',
+    'accounts.apps.AccountsConfig',
 
     'django.contrib.flatpages',
     'django.contrib.sites',
