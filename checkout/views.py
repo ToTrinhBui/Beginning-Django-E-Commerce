@@ -6,9 +6,10 @@ from checkout.forms import CheckoutForm
 from checkout.models import Order, OrderItem
 from checkout import checkout
 from cart import cart
-
+from accounts import profile
 
 def show_checkout(request):
+    """ checkout form page to collect user shipping and billing information """
     if cart.is_empty(request):
         cart_url = reverse('show_cart')
         return HttpResponseRedirect(cart_url)
@@ -17,8 +18,8 @@ def show_checkout(request):
         form = CheckoutForm(postdata)
         if form.is_valid():
             response = checkout.process(request)
-            order_number = response.get('order_number', 0)
-            error_message = response.get('message', '')
+            order_number = response.get('order_number',0)
+            error_message = response.get('message','')
             if order_number:
                 request.session['order_number'] = order_number
                 receipt_url = reverse('checkout_receipt')
@@ -26,7 +27,11 @@ def show_checkout(request):
         else:
             error_message = 'Correct the errors below'
     else:
-        form = CheckoutForm()
+        if request.user.is_authenticated:
+            user_profile = profile.retrieve(request)
+            form = CheckoutForm(instance=user_profile)
+        else:
+            form = CheckoutForm()
     page_title = 'Checkout'
     context = {'page_title':page_title, 'form': form}
     return render(request, "checkout/checkout.html", context)

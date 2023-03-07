@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'utils.apps.UtilsConfig',
     'cart.apps.CartConfig',
     'checkout.apps.CheckoutConfig',
+    'accounts.apps.AccountsConfig',
 
     'django.contrib.flatpages',
     'django.contrib.sites',
@@ -162,3 +163,7 @@ AUTHNET_POST_URL = 'test.authorize.net'
 AUTHNET_POST_PATH = '/gateway/transact.dll'
 AUTHNET_LOGIN = ['your login here']
 AUTHNET_KEY = ['your transaction key here']
+
+LOGIN_REDIRECT_URL = '/accounts/my_account/'
+
+AUTH_PROFILE_MODULE = 'accounts.userprofile'
