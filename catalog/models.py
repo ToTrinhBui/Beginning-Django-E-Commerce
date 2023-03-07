@@ -35,7 +35,7 @@ class Product(models.Model):
                             help_text='Unique value for product page URL, created from name.')
     brand = models.CharField(max_length=50)
     sku = models.CharField(max_length=50)
-    price = models.DecimalField(max_digits=9, decimal_places=2)
+    price = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
     old_price = models.DecimalField(max_digits=9, decimal_places=2,
                                     blank=True, default=0.00)
         # image fields, added in Chapter 7

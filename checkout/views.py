@@ -9,6 +9,8 @@ from cart import cart
 
 
 def show_checkout(request):
+    print('------------Show checkout--------------')
+    error_message = ''
     if cart.is_empty(request):
         cart_url = reverse('show_cart')
         return HttpResponseRedirect(cart_url)
@@ -28,17 +30,23 @@ def show_checkout(request):
     else:
         form = CheckoutForm()
     page_title = 'Checkout'
-    context = {'page_title':page_title, 'form': form}
+    context = {'page_title':page_title, 'form': form,}
+    if len(error_message) != 0:
+        context['error_message'] = error_message
     return render(request, "checkout/checkout.html", context)
 
 def receipt(request):
+    print('------------receipt--------------')
     order_number = request.session.get('order_number', '')
-    if order_number:
+    if order_number is not None:
         order = Order.objects.filter(id=order_number)[0]
         order_items = OrderItem.objects.filter(order=order)
         del request.session['order_number']
     else:
-        cart_url = urlresolvers.reverse('show_cart')
+        cart_url = reverse('show_cart')
         return HttpResponseRedirect(cart_url)
-    context = {}
+    context = {
+        'order': order,
+        'order_items': order_items
+    }
     return render(request, "checkout/receipt.html", context)

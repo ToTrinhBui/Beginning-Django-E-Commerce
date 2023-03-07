@@ -13,6 +13,7 @@ def get_checkout_url(request):
     return reverse('checkout')
 
 def process(request):
+    print('------------process--------------')
     # Transaction results
     APPROVED = '1'
     DECLINED = '2'
@@ -40,6 +41,7 @@ def process(request):
     if response[0] == ERROR or response[0] == HELD_FOR_REVIEW:
         results = {'order_number': 0,
                    'message': 'Error processing your order.'}
+    print('Result: '+ str(results))
     return results
 
 
@@ -60,7 +62,7 @@ def create_order(request, transaction_id):
             oi = OrderItem()
             oi.order = order
             oi.quantity = ci.quantity
-            oi.price = ci.price  # now using @property
+            oi.price = ci.price()  # now using @property
             oi.product = ci.product
             oi.save()
         # all set, empty cart

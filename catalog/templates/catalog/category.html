@@ -9,7 +9,7 @@
 	{% for p in products %}
 	<div class="product_thumbnail">
 		<a href="{{p.get_absolute_url}}">
-		<img src='{{p.image.url}}' alt="{{ p.name }}" class="bn" />
+		<img src='{{p.image.url}}' alt="{{ p.name }}" class="bn" style="height: 100pt" />
 		<br />
 		{{p.name }}
 		</a>

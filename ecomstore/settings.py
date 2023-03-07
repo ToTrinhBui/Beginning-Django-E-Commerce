@@ -152,7 +152,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'catalog/static/')
 
 GOOGLE_CHECKOUT_MERCHANT_ID = 'your id here'
 GOOGLE_CHECKOUT_MERCHANT_KEY = 'your key here'
-GOOGLE_CHECKOUT_URL = 'https://checkout.google.com/api/checkout/v2/merchantCheckout/Merchant/' + \
+GOOGLE_CHECKOUT_URL = 'https://checkout.googxle.com/api/checkout/v2/merchantCheckout/Merchant/' + \
     GOOGLE_CHECKOUT_MERCHANT_ID
 
 # Change to true before deploying into production
@@ -160,5 +160,9 @@ ENABLE_SSL = False
 
 AUTHNET_POST_URL = 'test.authorize.net'
 AUTHNET_POST_PATH = '/gateway/transact.dll'
-AUTHNET_LOGIN = ['your login here']
-AUTHNET_KEY = ['your transaction key here']
+AUTHNET_LOGIN = '8W7TbYc7F'
+AUTHNET_KEY = '5vYUKWb26eNP436S'
+
+
+# transaction key = 5vYUKWb26eNP436S
+# key = simon
