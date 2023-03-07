@@ -69,7 +69,7 @@ ROOT_URLCONF = 'ecomstore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -167,3 +167,8 @@ AUTHNET_KEY = '5vYUKWb26eNP436S'
 
 # transaction key = 5vYUKWb26eNP436S
 # key = simon
+
+LOGIN_REDIRECT_URL = '/accounts/my_account/'
+# LOGOUT_REDIRECT_URL = '/'
+
+AUTH_PROFILE_MODULE = 'accounts.userprofile'

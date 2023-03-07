@@ -49,7 +49,7 @@ def order_details(request, order_id):
     return render(request, "registration/order_details.html", context)
 
 @login_required
-def order_info(request, template_name="registration/order_info.html"):
+def order_info(request):
     if request.method == 'POST':
         postdata = request.POST.copy()
         form = UserProfileForm(postdata)
